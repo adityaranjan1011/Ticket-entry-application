@@ -1,6 +1,6 @@
 import React from 'react';
 import './Spinnerwheel.css';
-// import { selectItem } from '../Ticketgenerator/Ticketgenerator'
+
 
 export default class Spinnerwheel extends React.Component {
  
