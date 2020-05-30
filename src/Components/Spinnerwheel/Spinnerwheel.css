@@ -1,18 +1,11 @@
-/*
- * Spinnerwheel css File
-*/
-
-/* .Spinnerwheel {
-    /* propertys here */
-
 
 :root {
     --wheel-font: 'Lato', 'Quicksand', sans-serif;
     --wheel-size: 300px;
     --wheel-slice-spacing: 30px;
     --wheel-border-size: 5px;
-    --wheel-color: #004faa;
-    --neutral-color: white;
+    --wheel-color: #fff;
+    --neutral-color: #004faa;
     --PI: 3.14159265358979;
     --nb-item: 0;
     --item-nb: 0;
