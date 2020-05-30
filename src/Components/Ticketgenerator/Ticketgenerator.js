@@ -163,7 +163,7 @@ class Ticketgenerator extends Component {
                 <div className="cards" key={index}>
                 <img src={deleteIcon} alt="deleteIcon" className="deleteIcon" onClick={()=>this.deleteTicket(index)}/>
                 <div className="ticket-card">
-                <span className="card-text">Ticket  {index+1}</span>
+                <span className="card-text">Ticket  #{index+1}</span>
                  <span className="ticket"> {card}</span> 
                 </div>
                 </div>
