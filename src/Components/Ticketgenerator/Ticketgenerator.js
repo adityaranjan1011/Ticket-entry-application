@@ -95,7 +95,7 @@ class Ticketgenerator extends Component {
   render() {
     const {cardsWithNumber} = this.state;
     return (
-      <div className="Ticketgenerator">
+      <div className="ticketgenerator">
         <div className="generator-container">
           <div className="digit-container">
             <div className="digit-header">

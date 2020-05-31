@@ -1,5 +1,5 @@
 
-.Ticketgenerator {
+.ticketgenerator {
     padding: 10px;
     background-color: #004faa;
     height: calc(100vh - 20px);
@@ -80,7 +80,7 @@
     color: red;
     background-color: #fff;
     border-radius: 5px;
-    /* border-bottom-right-radius: 5px; */
+  
 }
 .selected-ticket{  
     text-align: start; 
@@ -145,5 +145,5 @@
 .deleteIcon{
     cursor: pointer;
     position: absolute;
-    right: 0
+    right: 0;
 }
