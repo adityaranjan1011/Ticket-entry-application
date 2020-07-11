@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Card, div } from "@material-ui/core";
 import "./Ticketgenerator.css";
 import Spinnerwheel from "../Spinnerwheel/Spinnerwheel";
 import backspace from "../../backspace.svg";
@@ -8,11 +7,11 @@ import add from "../../plus-box.svg";
 
 class Ticketgenerator extends Component {
 
-  constructor(props) {
+  constructor(props) {  
     super(props);
     this.cards = ["1", "2", "3", "4"];
     this.state = {
-      count: "0",
+      count: '',
       cardsWithNumber: [],
       clear:'',
       randomnumber: null
@@ -27,14 +26,16 @@ class Ticketgenerator extends Component {
       });
     }
   };
+
  clear = () =>{
    this.setState((prevState) => ({
     count: prevState.count.slice(0, -1)
    }))
  }
+
   deleteAll = () => {
     this.setState({
-      count: "0",
+      count: '',
     });
   };
 
@@ -45,7 +46,7 @@ class Ticketgenerator extends Component {
             ...this.state.cardsWithNumber,
             this.state.count
           ],
-          count: "0"
+          count: ''
         })
        }
   };
@@ -83,19 +84,21 @@ class Ticketgenerator extends Component {
     cardsWithNumber
    })
  }
+
  deleteSpinnerTicket = () => {
   this.setState({
     randomnumber: null
    })
  }
+
   render() {
     const {cardsWithNumber} = this.state;
     return (
-      <div className="Ticketgenerator">
+      <div className="ticketgenerator">
         <div className="generator-container">
           <div className="digit-container">
             <div className="digit-header">
-              {this.state.count}
+             <input  className =" text" placeholder=" Enter 6 digit " value={this.state.count} type="text" />
             </div>
 
             <div className="digit">
@@ -159,7 +162,7 @@ class Ticketgenerator extends Component {
                 <div className="cards" key={index}>
                 <img src={deleteIcon} alt="deleteIcon" className="deleteIcon" onClick={()=>this.deleteTicket(index)}/>
                 <div className="ticket-card">
-                  <span className="card-text">Ticket  {index+1}</span>
+                <span className="card-text">Ticket  #{index+1}</span>
                  <span className="ticket"> {card}</span> 
                 </div>
                 </div>

@@ -1,8 +1,5 @@
-/*
- * Ticketgenerator css File
-*/
 
-.Ticketgenerator {
+.ticketgenerator {
     padding: 10px;
     background-color: #004faa;
     height: calc(100vh - 20px);
@@ -83,7 +80,7 @@
     color: red;
     background-color: #fff;
     border-radius: 5px;
-    /* border-bottom-right-radius: 5px; */
+  
 }
 .selected-ticket{  
     text-align: start; 
@@ -114,6 +111,24 @@
     display: grid;
     grid-template-rows: repeat(2,1fr);
 }
+.text{
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid orangered;
+    width: 100px;
+}
+::placeholder { 
+    color: red;
+    opacity: 1; 
+  }
+  
+  :-ms-input-placeholder { 
+    color: red;
+  }
+  
+  ::-ms-input-placeholder { 
+    color: red;
+  }
 .card-text{
     border: 1px solid;
     padding-left: 10px;
