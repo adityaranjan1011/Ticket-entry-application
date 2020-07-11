@@ -8,17 +8,15 @@ import add from "../../plus-box.svg";
 
 class Ticketgenerator extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.cards = ["1", "2", "3", "4"];
     this.state = {
       count: "0",
-      generateNumber: Number,
+      cardsWithNumber: [],
       clear:'',
       randomnumber: null
     };
-    this.generate = this.generate.bind(this);
-    this.selectItem = this.selectItem.bind(this);
   }
 
   handle = (digit) => {
@@ -30,9 +28,9 @@ class Ticketgenerator extends Component {
     }
   };
  clear = () =>{
-   this.setState({
-    count: this.state.count.slice(0, -1)
-   })
+   this.setState((prevState) => ({
+    count: prevState.count.slice(0, -1)
+   }))
  }
   deleteAll = () => {
     this.setState({
@@ -41,13 +39,15 @@ class Ticketgenerator extends Component {
   };
 
   generate = (ele) => {
-    const count_value = this.state.count;
-    if (count_value.length === 6) {     
-      this.setState({
-        generateNumber: count_value,
-        count: "0",        
-      });
-    }
+       if(this.state.cardsWithNumber.length < 5) {
+        this.setState({
+          cardsWithNumber: [
+            ...this.state.cardsWithNumber,
+            this.state.count
+          ],
+          count: "0"
+        })
+       }
   };
 
   selectItem = () => {  
@@ -60,16 +60,27 @@ class Ticketgenerator extends Component {
       if (this.props.onSelectItem) {
         this.props.onSelectItem(randomnumber);
       }
-      this.setState({ randomnumber : randomnumber});
+      if(this.state.cardsWithNumber.length < 5) {
+        this.setState({
+          cardsWithNumber: [
+            ...this.state.cardsWithNumber,
+            randomnumber
+          ],
+          randomnumber : randomnumber, 
+        })
+       }
     } 
     else {
       this.setState({ randomnumber: null });
       setTimeout(this.selectItem, 0);
     }
   };
- deleteTicket = () =>{
+ deleteTicket = (index) =>{
+   var {cardsWithNumber} = this.state;
+   cardsWithNumber = cardsWithNumber.filter( (ele,ind) => ind !== index);
    this.setState({
     generateNumber : '',
+    cardsWithNumber
    })
  }
  deleteSpinnerTicket = () => {
@@ -78,7 +89,7 @@ class Ticketgenerator extends Component {
    })
  }
   render() {
-   
+    const {cardsWithNumber} = this.state;
     return (
       <div className="Ticketgenerator">
         <div className="generator-container">
@@ -143,44 +154,17 @@ class Ticketgenerator extends Component {
         <div className="selected-ticket">
           <span style={{ paddingLeft: "10px" }}> Your Selected Tickets : </span>
           <div className="card-container">
-            <div className="cards">
-            <img src={deleteIcon} alt="deleteIcon" className="deleteIcon" onClick={this.deleteTicket}/>
-              <div className="ticket-card">
-                <span className="card-text">Ticket  #1</span>
-               <span className="ticket"> {this.state.generateNumber}</span> 
-              </div>
-            </div>
-            <div className="cards"> 
-            <img src={deleteIcon} alt="deleteIcon" className="second-deleteIcon" onClick={this.deleteSpinnerTicket}/>
-              <div className="ticket-card">   
-              <span className="card-text">Ticket  #2</span>             
-              <span className="ticket"> {this.state.randomnumber}</span>
-              </div>
-            </div>
-            {/* <div className="cards">
-            <img src={deleteIcon} alt="deleteIcon" className="third-deleteIcon"/>
-              <div className="ticket-card">
-              <span className="card-text">Ticket  #3</span>
-                <span className="ticket"> {this.state.generateNumber}</span>
-                
-              </div>
-            </div> */}
-            {/* <div className="cards">
-            <img src={deleteIcon} alt="deleteIcon" className="fourth-deleteIcon"/>
-              <div className="ticket-card">
-              <span className="card-text">Ticket  #4</span>
-                <span className="ticket"> {this.state.generateNumber}</span>
-                
-              </div>
-            </div> */}
-            {/* <div className="cards">
-            <img src={deleteIcon} alt="deleteIcon" className="fifth-deleteIcon"/>
-              <div className="ticket-card">
-              <span className="card-text">Ticket  #5</span>
-                <span className="ticket"> {this.state.generateNumber}</span>
-                
-              </div>
-            </div> */}
+            {cardsWithNumber.map( (card,index) => {
+              return ( 
+                <div className="cards" key={index}>
+                <img src={deleteIcon} alt="deleteIcon" className="deleteIcon" onClick={()=>this.deleteTicket(index)}/>
+                <div className="ticket-card">
+                  <span className="card-text">Ticket  {index+1}</span>
+                 <span className="ticket"> {card}</span> 
+                </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

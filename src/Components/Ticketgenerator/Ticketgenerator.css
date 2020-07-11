@@ -97,6 +97,7 @@
     background-color: #fff;
     border-radius: 5px;
     height: 80px;
+    position: relative;
 }
 .card-container{
     margin-top: 15px;
@@ -129,30 +130,5 @@
 .deleteIcon{
     cursor: pointer;
     position: absolute;
-    bottom: 12%;
-    left: 17%;
-}
-.second-deleteIcon{
-    cursor: pointer;
-    position: absolute;
-    bottom: 12%;
-    left: 37%;
-}
-.third-deleteIcon{
-    cursor: pointer;
-    position: absolute;
-    bottom: 12%;
-    left: 56%;
-}
-.fourth-deleteIcon{
-    cursor: pointer;
-    position: absolute;
-    bottom: 12%;
-    right: 22%;
-}
-.fifth-deleteIcon{
-    cursor: pointer;
-    position: absolute;
-    bottom: 12%;
-    right: 3%;
+    right: 0
 }

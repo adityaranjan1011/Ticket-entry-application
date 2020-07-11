@@ -6,8 +6,7 @@ export default class Spinnerwheel extends React.Component {
  
   render() {
    
-    const { randomnumber } = this.props;
-    const { items } = this.props;
+    const { randomnumber, items } = this.props;
     const wheelVars = {
       '--nb-item': items.length,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
       '--selected-item': randomnumber,
